@@ -1,8 +1,6 @@
-import lyricsgenius as lg
+import lyricsgenius as lg 
 
-CLIENT_ACCESS_TOKEN = 'Enter Here'
-
-def get_lyrics(song_name, song_artist):
+def get_lyrics(song_name, song_artist, GENINUS_CLIENT_TOKEN):
     
     """
     This function will get the song lyrics based on the 
@@ -20,7 +18,7 @@ def get_lyrics(song_name, song_artist):
         Otherwise, it will return None.
     """
     
-    genius = lg.Genius(CLIENT_ACCESS_TOKEN, skip_non_songs=True, 
+    genius = lg.Genius(GENINUS_CLIENT_TOKEN, skip_non_songs=True, 
     remove_section_headers=True)
 
     song = genius.search_song(song_name, song_artist)

@@ -150,7 +150,7 @@ class MediaWindow(QMainWindow):
             song = tt.get(filePath)
             songTitle = song.title
             songArtist = song.artist
-            lyrics = get_lyrics(songTitle, songArtist)
+            lyrics = get_lyrics(songTitle, songArtist, "hAe4Arvcyuuc9SKMpIm67yfkMGyyPVGg-vro7aDyRI3eqQgRmJmPtOvYWVFdM9mx")
             self.SIMP_Lyrics = QtWidgets.QMainWindow()
             self.simp_lyrics = Ui_SIMP_Lyrics_Window()
             self.simp_lyrics.setupUi(self.SIMP_Lyrics, songTitle, songArtist, lyrics)

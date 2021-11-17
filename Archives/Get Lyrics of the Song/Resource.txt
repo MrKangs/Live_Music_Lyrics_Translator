@@ -1,2 +1,0 @@
-https://towardsdatascience.com/song-lyrics-genius-api-dcc2819c29
-https://genius.com/api-clients
