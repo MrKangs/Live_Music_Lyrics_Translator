@@ -1,7 +1,7 @@
 import lyricsgenius as lg
 import csv
 
-CLIENT_ACCESS_TOKEN = 'Enter Here'
+CLIENT_ACCESS_TOKEN = 'hAe4Arvcyuuc9SKMpIm67yfkMGyyPVGg-vro7aDyRI3eqQgRmJmPtOvYWVFdM9mx'
 
 def get_lyrics(song_name, song_artist):
     """

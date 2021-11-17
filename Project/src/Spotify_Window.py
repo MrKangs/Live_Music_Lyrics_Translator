@@ -1,9 +1,8 @@
-import lyricsgenius as lg
 import os
 from PyQt5 import QtCore, QtGui, QtWidgets
-import googletrans as google
-from PyQt5 import QtCore, QtGui, QtWidgets
 from Variables.language_option import language_option
+from MicroService.get_song_lyrics import get_lyrics
+from MicroService.translate_lyrics import translate_lyrics
 
 # Global Variables
 
@@ -16,7 +15,6 @@ total_period = 0
 lyrics_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Lyrics")
 OG_PATH = os.path.join(lyrics_path, "OG.txt")
 TRANSLATED_PATH = os.path.join(lyrics_path, "TRANSLATED.txt")
-CLIENT_ACCESS_TOKEN = 'hAe4Arvcyuuc9SKMpIm67yfkMGyyPVGg-vro7aDyRI3eqQgRmJmPtOvYWVFdM9mx'
 class Ui_Spotify_Window(object):
     """
     This is one of the child window from the Selection Screen window
@@ -192,7 +190,8 @@ class Ui_Spotify_Window(object):
         """
         global user_selection_language
         user_selection_language = language_option[self.language_box.currentText()]
-        self.translate_lyrics(user_selection_language)
+        translate_lyrics(user_selection_language, OG_PATH, TRANSLATED_PATH)
+        self.display()
     
     
     def update(self):
@@ -283,12 +282,6 @@ class Ui_Spotify_Window(object):
         current_progression = responses_json['progress_ms']
         total_progression = responses_json['item']['duration_ms']
 
-
-        current_track_info = {
-            "name": track_name,
-            "artists": artists
-        }
-
         global current_song_title, current_song_artists, current_position, total_period
 
         current_position = current_progression
@@ -302,86 +295,16 @@ class Ui_Spotify_Window(object):
         self.lbl_total_period.setText("{}:{}".format(minutes,seconds))
         
 
-        if current_song_title is not current_track_info['name'] and current_song_artists is not current_track_info['artists']:
-            current_song_title = current_track_info['name']
-            current_song_artists = current_track_info['artists']
-            self.get_lyrics(current_track_info)
-    
-    def get_lyrics(self, song_info):
-        """
-        This function will be triggered after the get_current_track function
-        This will use Genius API to search the song name and artist name that is associated with the song
-        If the song name cannot be found, then just simply search the song name
-        If that does not work, then send the users that the Genuius API cannot find it
+        if current_song_title is not track_name and current_song_artists is not artists:
+            current_song_title = track_name
+            current_song_artists = artists
 
-        If the song is found, then it will save the lyrics as a .txt file and trigger translate_lyrics function
-
-        Args:
-            song_info: Dictionary that has at least song name and artists names
-        """
-
-        lyrics = open(OG_PATH, "w", encoding= "utf=8")
-
-        genius = lg.Genius(CLIENT_ACCESS_TOKEN, skip_non_songs= True, remove_section_headers= True)
-        
-        song = genius.search_song(song_info["name"], song_info["artists"])
-        
-        if song is None:
-            song = genius.search_song(song_info["name"])
-        
-        if song is None:
-            lyrics.write("No Song Lyrics can be found.")
-        
-        else:
-            song_lyrics = song.lyrics.replace("EmbedShare URLCopyEmbedCopy", "")
+            lyrics = open(OG_PATH, "w", encoding= "utf=8")
+            song_lyrics = get_lyrics(track_name, artists)
             lyrics.write(song_lyrics)
-
-        lyrics.close()
-            
-        self.translate_lyrics(user_selection_language) 
-    
-    def translate_lyrics(self, language:str):
-        """
-        This function will be triggered after get_lyrics function
-        This function will use Google Translate API based on the .txt file
-
-        If the lyrics too large (limit of 5,000 characters), then it will do a split translation of Google Translator API
-
-        Once the translation is complete, then it will write a new .txt file called TRANSLATED that will have the translated version of the lyrics
-        At the same time, it will trigger the display function
-
-        Args:
-            language: string value that indicates which language to be translated 
-        """        
-        
-        translator = google.Translator()
-        og_file = open(OG_PATH, "r", encoding= "utf-8")
-
-        translated_file = open(TRANSLATED_PATH, "w", encoding= "utf-8")
-
-        og_lyrics = og_file.read()
-
-        if len(og_lyrics) > 5000:
-            split_lyrics = []
-
-            for i in range(0, len(og_lyrics), 4999):
-                split_lyrics.append(og_lyrics[i: i + 5000])
-
-            for i in range(len(split_lyrics)):
-                result = translator.translate(split_lyrics[i], dest = language)
-                translated_file.write(result.text)
-            
-            translated_file.close()
-            og_file.close()
-        
-        else:
-
-            result = translator.translate(og_lyrics, dest = language)
-            translated_file.write(result.text)
-            og_file.close()
-            translated_file.close()
-       
-        self.display()
+            lyrics.close()
+            translate_lyrics(user_selection_language, OG_PATH, TRANSLATED_PATH)
+            self.display()
     
     def display(self):
         """
@@ -415,16 +338,16 @@ class Ui_Spotify_Window(object):
         """
         _translate = QtCore.QCoreApplication.translate
         Spotify_Window.setWindowTitle(_translate("Spotify_Window", "Spotify"))
-        self.og_lyrics.setText(_translate("Spotify_Window", "TextLabel"))
-        self.translated_lyrics.setText(_translate("Spotify_Window", "TextLabel"))
-        self.song_name.setText(_translate("Spotify_Window", "TextLabel"))
-        self.song_artists.setText(_translate("Spotify_Window", "TextLabel"))
+        self.og_lyrics.setText(_translate("Spotify_Window", ""))
+        self.translated_lyrics.setText(_translate("Spotify_Window", ""))
+        self.song_name.setText(_translate("Spotify_Window", ""))
+        self.song_artists.setText(_translate("Spotify_Window", ""))
         self.btn_play_pause.setText(_translate("Spotify_Window", "Pause"))
         self.btn_previous.setText(_translate("Spotify_Window", "Previous"))
         self.btn_skip.setText(_translate("Spotify_Window", "Skip"))
         self.btn_refresh.setText(_translate("Spotify_Window", "Refresh"))
-        self.lbl_current_progression.setText(_translate("Spotify_Window", "TextLabel"))
-        self.lbl_total_period.setText(_translate("Spotify_Window", "TextLabel"))
+        self.lbl_current_progression.setText(_translate("Spotify_Window", ""))
+        self.lbl_total_period.setText(_translate("Spotify_Window", ""))
         key_values = list(language_option.keys())
         for i in range(106):
             self.language_box.setItemText(i, _translate("Spotify_Window", key_values[i]))

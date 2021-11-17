@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Spotify_Window import Ui_Spotify_Window
+from MicroService.SIMP import MediaWindow
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import webbrowser
@@ -92,8 +93,20 @@ class Ui_Selection_Window(object):
         Selection_Window.close()
     
     def connect_local_music(self):
-        print("clicked")
-        pass
+        
+        if (os.path.exists(r"C:\\Program Files (x86)\\K-Lite Codec Pack\\MPC-HC64") is False):
+            webbrowser.open("https://www.codecguide.com/download_k-lite_codec_pack_standard.htm")
+            warning = QtWidgets.QErrorMessage()
+            warning.setWindowTitle("Warning!")
+            warning.showMessage("You need to Download K-Lite Codec Pack!\n Select Server 1, and just click Next over and over in the Installator. \n Once that is complete, then re-run the program.")
+            x = warning.exec_()
+            
+        else:
+            self.simp = MediaWindow()
+            self.simp.openFile()
+            self.simp.resize(450,25)
+            self.simp.show()
+            Selection_Window.close()
     
     def retranslateUi(self, Selection_Window):
         _translate = QtCore.QCoreApplication.translate
