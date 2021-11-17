@@ -1,0 +1,2 @@
+https://stackabuse.com/text-translation-with-google-translate-api-in-python/
+https://stackoverflow.com/questions/52455774/googletrans-stopped-working-with-error-nonetype-object-has-no-attribute-group

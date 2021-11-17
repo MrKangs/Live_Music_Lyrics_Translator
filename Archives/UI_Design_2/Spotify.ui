@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Spotify_Window</class>
+ <widget class="QMainWindow" name="Spotify_Window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>598</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QComboBox" name="language_box">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>531</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+    <item>
+     <property name="text">
+      <string>Afrikaans</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Albanian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amharic</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Arabic</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Armenian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Azerbaijani</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Basque</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Belarusian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Bengali</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Bosnian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Bulgarian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Catalan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Cebuano</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Chichewa</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Chinese (Simplified)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Chinese (Traditional)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Corsican</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Croatian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Czech</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Danish</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Dutch</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>English</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Esperanto</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Estonian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Filipino</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Finnish</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>French</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Frisian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Galician</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Georgian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>German</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Greek</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Gujarati</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Haitian Creole</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Hausa</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Hawaiian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Hebrew</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Hindi</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Hmong</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Hungarian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Icelandic</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Igbo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Indonesian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Irish</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Italian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Japanese</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Javanese</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Kannada</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Kazakh</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Khmer</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Korean</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Kurdish (Kurmanji)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Kyrgyz</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Lao</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Latin</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Latvian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Lithuanian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Luxembourgish</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Macedonian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Malagasy</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Malay</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Malayalam</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Maltese</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Maori</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Marathi</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Mongolian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Myanmar (Burmese)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Nepali</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Norwegian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Odia</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Pashto</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Persian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Polish</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Portuguese</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Punjabi</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Romanian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Russian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Samoan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Scots Gaelic</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Serbian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Sesotho</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Shona</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Sindhi</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Sinhala</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Slovak</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Slovenian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Somali</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Spanish</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Sundanese</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Swahili</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Swedish</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Tajik</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Tamil</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Telugu</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Thai</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Turkish</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Ukrainian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Urdu</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Uyghur</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Uzbek</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Vietnamese</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Welsh</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Xhosa</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Yiddish</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Yoruba</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Zulu</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="og_lyrics_line_1">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>110</y>
+      <width>521</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="translated_lyrics_line_2">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>180</y>
+      <width>521</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="og_lyrics_line_2">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>280</y>
+      <width>521</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="translated_lyrics_line_3">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>360</y>
+      <width>521</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
