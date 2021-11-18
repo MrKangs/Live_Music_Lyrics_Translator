@@ -12,3 +12,4 @@ lyrics_path = os.path.join(lyrics_path, "Lyrics")
 OG_PATH = os.path.join(lyrics_path, "OG.txt")
 TRANSLATED_PATH = os.path.join(lyrics_path, "TRANSLATED.txt")
 GENINUS_CLIENT_TOKEN = "hAe4Arvcyuuc9SKMpIm67yfkMGyyPVGg-vro7aDyRI3eqQgRmJmPtOvYWVFdM9mx"
+MUSIC_MATCH_CLIENT_TOKEN = "772567dff4df6dd9d220a8473fd7af13"

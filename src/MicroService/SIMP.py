@@ -14,7 +14,6 @@ from PyQt5.QtGui import QIcon, QKeySequence, QPixmap
 from tinytag import TinyTag as tt
 from MicroService.get_song_lyrics import get_lyrics
 from SIMP_Lyrics import Ui_SIMP_Lyrics_Window
-import sys
 
 class MediaWindow(QMainWindow):
 
@@ -150,7 +149,7 @@ class MediaWindow(QMainWindow):
             song = tt.get(filePath)
             songTitle = song.title
             songArtist = song.artist
-            lyrics = get_lyrics(songTitle, songArtist, "hAe4Arvcyuuc9SKMpIm67yfkMGyyPVGg-vro7aDyRI3eqQgRmJmPtOvYWVFdM9mx")
+            lyrics = get_lyrics(songTitle, songArtist, "hAe4Arvcyuuc9SKMpIm67yfkMGyyPVGg-vro7aDyRI3eqQgRmJmPtOvYWVFdM9mx", MUSIC_MATCH_CLIENT_TOKEN = "772567dff4df6dd9d220a8473fd7af13")
             self.SIMP_Lyrics = QtWidgets.QMainWindow()
             self.simp_lyrics = Ui_SIMP_Lyrics_Window()
             self.simp_lyrics.setupUi(self.SIMP_Lyrics, songTitle, songArtist, lyrics)

@@ -278,6 +278,7 @@ class Ui_Spotify_Window(object):
                 os.path.dirname(os.path.abspath(__file__)), "Lyrics"))
                 
         responses_json = self.spotify_api.current_user_playing_track()
+        print(responses_json)
         track_name = responses_json['item']['name']
         artists = responses_json['item']['artists'][0]['name']
         current_progression = responses_json['progress_ms']
@@ -303,7 +304,7 @@ class Ui_Spotify_Window(object):
     def get_lyrics_and_translate_it(self):
         lyrics = open(data.OG_PATH, "w", encoding= "utf=8")
         song_lyrics = get_lyrics(data.current_song_title, 
-        data.current_song_artists, data.GENINUS_CLIENT_TOKEN)
+        data.current_song_artists, data.GENINUS_CLIENT_TOKEN, data.MUSIC_MATCH_CLIENT_TOKEN)
         if song_lyrics is None:
             song_lyrics = "Specified song does not contain lyrics."
         lyrics.write(song_lyrics)
