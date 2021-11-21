@@ -5,6 +5,7 @@ from MicroService.get_song_lyrics import get_lyrics
 from MicroService.translate_lyrics import translate_lyrics
 import Variables.Spotify_Window as data
 import time
+
 class Ui_Spotify_Window(object):
     def setupUi(self, Spotify_Window, spotify_api, testing=False):
         Spotify_Window = self.creation_MainWindow(Spotify_Window)
@@ -28,11 +29,11 @@ class Ui_Spotify_Window(object):
         self.spotify_api = spotify_api
 
         self.retranslateUi(Spotify_Window)
-        self.assign_functions()
         status = self.first_checker(testing)
         if testing:
             return status
         self.get_current_track()
+        self.assign_functions()
 
     def declare_font(self):
         font = QtGui.QFont()
@@ -127,6 +128,7 @@ class Ui_Spotify_Window(object):
         self.progression_bar = QtWidgets.QSlider(self.centralwidget)
         self.progression_bar.setGeometry(QtCore.QRect(30, 90, 531, 22))
         self.progression_bar.setOrientation(QtCore.Qt.Horizontal)
+        self.progression_bar.setTickInterval(1)
         self.progression_bar.setObjectName("progression_bar")
     
     def creation_lbl_current_progression(self, font):
@@ -190,7 +192,7 @@ class Ui_Spotify_Window(object):
         self.btn_previous.clicked.connect(self.previous)
         self.btn_skip.clicked.connect(self.skip)
         self.btn_refresh.clicked.connect(self.get_current_track)
-        # self.horizontalSlider.valueChanged.connect(self.new_position)
+        self.progression_bar.sliderMoved.connect(self.new_position)
 
     def first_checker(self, testing):
         first_warning = True
@@ -265,11 +267,9 @@ class Ui_Spotify_Window(object):
         self.btn_play_pause.setText("Pause")
         self.timer.start(1)
     
-    # def new_position(self):
-    # TODO: Make this function alive again... need to find an alternative way to do this
-    #     global current_position
-    #     current_position = self.horizontalSlider.sliderPosition()
-    #     self.spotify_api.seek_track(current_position)
+    def new_position(self):
+        data.current_position = self.progression_bar.sliderPosition()
+        self.spotify_api.seek_track(data.current_position)
 
     def get_current_track(self):
         if os.path.exists(os.path.join(
