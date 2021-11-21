@@ -24,6 +24,8 @@ As every individual are getting connected to the world, we need to understand ea
 
 ## Installing The Software
 
+As of now, this software is able to run on Windows Machine. The Mac users are able to use Spotify, but not local music.
+
 1. Make sure you installed python 3.8 or python 3.9.
    - You can find the python installation [here](https://www.python.org/downloads/).
 2. Download the repository code.
