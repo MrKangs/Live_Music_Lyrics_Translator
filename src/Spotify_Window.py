@@ -192,7 +192,8 @@ class Ui_Spotify_Window(object):
         self.btn_previous.clicked.connect(self.previous)
         self.btn_skip.clicked.connect(self.skip)
         self.btn_refresh.clicked.connect(self.get_current_track)
-        self.progression_bar.sliderMoved.connect(self.new_position)
+        self.progression_bar.sliderMoved.connect(self.moving_new_position)
+        self.progression_bar.sliderReleased.connect(self.new_position)
 
     def first_checker(self, testing):
         first_warning = True
@@ -267,9 +268,15 @@ class Ui_Spotify_Window(object):
         self.btn_play_pause.setText("Pause")
         self.timer.start(1)
     
+    def moving_new_position(self):
+        self.play_pause()
+        self.progression_bar.sliderMoved.disconnect()
+    
     def new_position(self):
         data.current_position = self.progression_bar.sliderPosition()
         self.spotify_api.seek_track(data.current_position)
+        self.progression_bar.sliderMoved.connect(self.moving_new_position)
+        self.play_pause()
 
     def get_current_track(self):
         if os.path.exists(os.path.join(
