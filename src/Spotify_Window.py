@@ -29,11 +29,11 @@ class Ui_Spotify_Window(object):
         self.spotify_api = spotify_api
 
         self.retranslateUi(Spotify_Window)
+        self.assign_functions()
         status = self.first_checker(testing)
         if testing:
             return status
         self.get_current_track()
-        self.assign_functions()
 
     def declare_font(self):
         font = QtGui.QFont()
