@@ -102,7 +102,7 @@ class Ui_Spotify_Window(object):
     
     def creation_song_name(self, font):
         self.song_name = QtWidgets.QLabel(self.centralwidget)
-        self.song_name.setGeometry(QtCore.QRect(30, 20, 291, 41))
+        self.song_name.setGeometry(QtCore.QRect(30, 10, 291, 70))
         font.setPointSize(16)
         font.setBold(False)
         font.setWeight(50)
@@ -117,7 +117,7 @@ class Ui_Spotify_Window(object):
         font.setBold(False)
         font.setWeight(50)
         self.song_artists = QtWidgets.QLabel(self.centralwidget)
-        self.song_artists.setGeometry(QtCore.QRect(340, 20, 231, 41))
+        self.song_artists.setGeometry(QtCore.QRect(340, 10, 231, 70))
         self.song_artists.setFont(font)
         self.song_artists.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.song_artists.setAlignment(QtCore.Qt.AlignCenter)
@@ -285,21 +285,34 @@ class Ui_Spotify_Window(object):
                 os.path.dirname(os.path.abspath(__file__)), "Lyrics"))
                 
         responses_json = self.spotify_api.current_user_playing_track()
+        print(responses_json)
         track_name = responses_json['item']['name']
-        artists = responses_json['item']['artists'][0]['name']
+        artists = responses_json['item']['artists']
         current_progression = responses_json['progress_ms']
         total_progression = responses_json['item']['duration_ms']
         data.current_position = current_progression
         data.total_period = total_progression
+
+        main_artist = artists[0]['name']
+        artists = self.get_all_artist_name(artists)
+        
 
         self.update_total_progression()
 
         if (data.current_song_title is not track_name) and (data.current_song_artists is not artists):
             data.current_song_title = track_name
             data.current_song_artists = artists
-            self.get_lyrics_and_translate_it()
+            self.get_lyrics_and_translate_it(main_artist)
         
         self.display()
+    
+    def get_all_artist_name(self, json):
+        artists = ""
+        for i in range(len(json)):
+            name = json[i]['name']
+            artists += name + ", "
+        artists = artists[:-2]
+        return artists
     
     def update_total_progression(self):
         self.progression_bar.setMaximum(data.total_period)
@@ -307,10 +320,10 @@ class Ui_Spotify_Window(object):
         self.lbl_total_period.setText(
             "{:02}:{:02}".format(minutes,seconds))
 
-    def get_lyrics_and_translate_it(self):
+    def get_lyrics_and_translate_it(self, main_artist):
         lyrics = open(data.OG_PATH, "w", encoding= "utf=8")
         song_lyrics = get_lyrics(data.current_song_title, 
-        data.current_song_artists, data.GENINUS_CLIENT_TOKEN)
+        main_artist, data.GENINUS_CLIENT_TOKEN)
         if song_lyrics is None:
             song_lyrics = "Specified song does not contain lyrics."
         lyrics.write(song_lyrics)
